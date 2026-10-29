@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="bn"><head><meta charset="utf-8"><title>ভাই বোন ইলেকট্রনিক্স</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<style>
+:root{--bg:#f3f4fb;--card:#fff;--tx:#1b1b3a;--mu:#6b6b8a;--bd:#e3e4f2;--nav:#1d1650;--pr:#4f46e5;--vi:#7c3aed;--gr:#16a34a;--rd:#dc2626;--am:#d97706;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#12122a;--card:#1c1c3d;--tx:#eeeefc;--mu:#a2a2c6;--bd:#33335c;--nav:#0c0a28}}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.45 'Hind Siliguri',system-ui,sans-serif}
+#side{display:none}
+#top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--nav);color:#fff;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;font-weight:700}
+#bn{position:fixed;bottom:0;left:0;right:0;background:var(--nav);display:flex;overflow-x:auto;padding-bottom:env(safe-area-inset-bottom,0px);z-index:5}
+#bn button{flex:1 0 64px;background:none;border:0;color:#b9b6ee;padding:6px 2px;font:600 11px inherit;font-family:inherit}
+#bn button.on{color:#fff;background:var(--vi)}#bn span,#side span{display:block;font-size:19px}
+main{padding:12px 12px 90px;max-width:1100px;margin:auto}
+.card{background:var(--card);border-radius:14px;box-shadow:0 2px 8px #0001;padding:12px;margin-bottom:12px}
+.g{display:grid;gap:10px;grid-template-columns:repeat(2,1fr)}.stat b{display:block;font-size:19px}.stat small{color:var(--mu)}
+button.b,a.b{background:var(--pr);color:#fff;border:0;border-radius:10px;padding:10px 14px;font:600 14px inherit;font-family:inherit;min-height:42px;cursor:pointer}
+.b.v{background:var(--vi)}.b.g2{background:var(--gr)}.b.r{background:var(--rd)}.b.o{background:none;color:var(--pr);border:1px solid var(--pr)}.b.s{padding:6px 10px;min-height:34px}
+input,select,textarea{width:100%;padding:9px;border:1px solid var(--bd);border-radius:9px;background:var(--card);color:var(--tx);font:inherit;min-height:42px}
+label{display:block;font-size:13px;color:var(--mu);margin:8px 0 2px}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.row>*{flex:1}.row>.b{flex:0 0 auto}
+.it{display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--bd)}.it:last-child{border:0}
+.it .t{flex:1;min-width:0;cursor:pointer}.it .t b{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.th{width:52px;height:52px;border-radius:9px;background:var(--bd);object-fit:contain;flex:none;display:flex;align-items:center;justify-content:center;font-size:22px}
+.bd{display:inline-block;padding:1px 8px;border-radius:99px;font-size:12px;background:#fee2e2;color:#b91c1c}.bd.ok{background:#dcfce7;color:#15803d}
+.mu{color:var(--mu);font-size:13px}h2{margin:4px 0 10px;font-size:20px}h3{margin:6px 0}
+#m{position:fixed;inset:0;background:#0008;z-index:20;display:none;align-items:flex-start;justify-content:center;overflow:auto;padding:16px 8px}
+#m.on{display:flex}#m>div{background:var(--card);border-radius:14px;padding:14px;width:100%;max-width:560px}
+#toast{position:fixed;left:50%;transform:translateX(-50%);bottom:76px;background:var(--gr);color:#fff;padding:10px 16px;border-radius:10px;z-index:30;display:none;max-width:90%}#toast.er{background:var(--rd)}
+.tw{overflow-x:auto}table{width:100%;border-collapse:collapse}td,th{padding:6px;border-bottom:1px solid var(--bd);text-align:left;font-size:14px}
+.memo{background:#fff;color:#000;padding:12px;border-radius:8px}.memo td,.memo th{border-color:#ccc}.memo h3{text-align:center;margin:0}
+.big{width:100%;height:200px;object-fit:contain;background:var(--bd);border-radius:10px}
+@media(min-width:900px){#bn{display:none}#side{display:block;position:fixed;top:0;bottom:0;left:0;width:210px;background:var(--nav);padding:14px 8px;overflow:auto}
+#side button{display:flex;gap:8px;align-items:center;width:100%;background:none;border:0;color:#c9c6f6;padding:11px;border-radius:10px;font:600 15px inherit;font-family:inherit;text-align:left;cursor:pointer}
+#side button.on{background:var(--vi);color:#fff}#side h1{color:#fff;font-size:17px;margin:4px 8px 14px}#side span{display:inline}
+#top,main{margin-left:210px}main{padding-bottom:30px}.g{grid-template-columns:repeat(3,1fr)}.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}}
+@media print{body>*:not(#m){display:none!important}#m{position:static;background:none;display:block;padding:0}#m>div{box-shadow:none;max-width:none;padding:0}.np{display:none!important}tr{break-inside:avoid}}
+</style></head><body>
+<div id="top"></div><nav id="side"></nav><main id="pg"></main><nav id="bn"></nav><div id="m"><div></div></div><div id="toast"></div>
+<script>
+// ===== Translations: key|English|Bengali (stable dictionary, rendered via t()) =====
+const TR=`app|Vai Bon Electronics|ভাই বোন ইলেকট্রনিক্স
+dash|Dashboard|ড্যাশবোর্ড
+prods|Products|পণ্য
+memo|New Memo|নতুন মেমো
+hist|Memos|মেমো তালিকা
+buy|Purchases|ক্রয়
+parties|People|কাস্টমার/সাপ্লায়ার
+reports|Reports|রিপোর্ট
+settings|Settings|সেটিংস
+tProd|Total products|মোট পণ্য
+tStock|Stock units|মোট স্টক
+tVal|Stock cost value|স্টকের ক্রয়মূল্য
+tSales|Today's sales|আজকের বিক্রি
+tProfit|Today's profit (est.)|আজকের লাভ (আনুমানিক)
+tLow|Low stock|কম স্টক
+addProd|Add product|পণ্য যোগ
+recM|Recent memos|সাম্প্রতিক মেমো
+recP|Recent purchases|সাম্প্রতিক ক্রয়
+search|Search name or code|নাম বা কোড খুঁজুন
+allCat|All categories|সব ক্যাটাগরি
+empty|Nothing here yet|এখানে কিছু নেই
+name|Name|নাম
+code|Code / SKU|কোড
+cat|Category|ক্যাটাগরি
+brand|Brand|ব্র্যান্ড
+unit|Unit|একক
+cost|Wholesale cost|পাইকারি দাম
+price|Retail price|খুচরা দাম
+stock|Stock|স্টক
+lowAt|Low-stock alert at|কম স্টক সীমা
+desc|Notes|নোট
+photo|Photo|ছবি
+save|Save|সংরক্ষণ
+cancel|Cancel|বাতিল
+close|Close|বন্ধ
+edit|Edit|সম্পাদনা
+del|Delete|মুছুন
+view|View|দেখুন
+saved|Saved|সংরক্ষিত হয়েছে
+low|Low|কম
+showW|Show wholesale prices|পাইকারি দাম দেখান
+lockW|Lock wholesale prices|পাইকারি দাম লুকান
+hidden|Hidden|গোপন
+pin|PIN|পিন
+pinWrong|Wrong PIN|ভুল পিন
+unlock|Unlock|আনলক
+addMemo|Add to memo|মেমোতে যোগ
+cust|Customer name|কাস্টমারের নাম
+phone|Phone|ফোন
+addr|Address|ঠিকানা
+note|Note|নোট
+qty|Qty|পরিমাণ
+sub|Subtotal|উপমোট
+disc|Discount|ছাড়
+total|Total|মোট
+paid|Paid|পরিশোধ
+due|Due|বাকি
+method|Payment method|পেমেন্ট পদ্ধতি
+cash|Cash|নগদ
+bkash|bKash|বিকাশ
+card|Card|কার্ড
+other|Other|অন্যান্য
+create|Create memo|মেমো তৈরি করুন
+print|Print memo|মেমো প্রিন্ট
+share|Share memo|মেমো শেয়ার
+copied|Copied to clipboard (text only, not a PDF)|কপি হয়েছে (শুধু লেখা, PDF নয়)
+copyMan|Copy this text manually (text only, not a PDF)|এই লেখা কপি করুন (শুধু লেখা, PDF নয়)
+memoNo|Memo no.|মেমো নং
+date|Date|তারিখ
+thanks|Thank you for shopping with us!|কেনাকাটার জন্য ধন্যবাদ!
+deleted|Deleted (stock restored)|বাতিল (স্টক ফেরত)
+delMemo|Delete memo|মেমো মুছুন
+delMemoQ|Delete memo {0}? Sold quantities will be added back to stock once, and the record is kept as deleted.|মেমো {0} মুছবেন? বিক্রিত পরিমাণ একবার স্টকে ফেরত যাবে এবং রেকর্ড "বাতিল" হিসেবে থাকবে।
+delProdQ|Delete product "{0}"? Old memos keep their saved data.|পণ্য "{0}" মুছবেন? পুরনো মেমোর তথ্য অক্ষত থাকবে।
+eName|Name is required|নাম দিতে হবে
+eCode|This code is already used|এই কোড আগেই আছে
+ePrice|Enter valid prices|সঠিক দাম দিন
+eStockN|Stock cannot be negative|স্টক ঋণাত্মক হতে পারে না
+eEmpty|Add at least one item|অন্তত একটি পণ্য যোগ করুন
+eQty|Quantity must be more than zero|পরিমাণ শূন্যের বেশি হতে হবে
+eStock|Not enough stock for {0}|{0} এর স্টক যথেষ্ট নয়
+eDisc|Discount cannot exceed subtotal|ছাড় উপমোটের বেশি হতে পারে না
+ePay|Enter a valid payment amount|সঠিক পরিশোধের পরিমাণ দিন
+eSave|Could not save data: {0}|ডেটা সংরক্ষণ করা যায়নি: {0}
+eDb|Browser storage is unavailable|ব্রাউজার স্টোরেজ পাওয়া যাচ্ছে না
+eImg|Could not read this image|ছবিটি পড়া যায়নি
+supplier|Supplier|সাপ্লায়ার
+product|Product|পণ্য
+extra|Extra expenses|অতিরিক্ত খরচ
+invNo|Invoice no.|ইনভয়েস নং
+addBuy|Record purchase|ক্রয় সংরক্ষণ
+customer|Customer|কাস্টমার
+newP|Add person|নতুন যোগ
+from|From|শুরু
+to|To|শেষ
+today|Today|আজ
+week|7 days|৭ দিন
+month|30 days|৩০ দিন
+sales|Sales|বিক্রি
+disc2|Discounts|মোট ছাড়
+profit|Estimated profit|আনুমানিক লাভ
+profitNote|Estimated profit = sale price minus saved cost, minus discounts. Expenses, taxes and returns are excluded.|আনুমানিক লাভ = বিক্রয়মূল্য − সংরক্ষিত ক্রয়মূল্য − ছাড়। খরচ, ট্যাক্স ও রিটার্ন ধরা হয়নি।
+purch|Purchases|ক্রয়
+custDue|Customer dues|কাস্টমারের বাকি
+supDue|Supplier dues|সাপ্লায়ারের বাকি
+byProd|By product|পণ্যভিত্তিক
+byCat|By category|ক্যাটাগরিভিত্তিক
+lowRep|Low-stock list|কম স্টকের তালিকা
+shopName|Shop name|দোকানের নাম
+lang|Language|ভাষা
+newPin|New PIN (4+ digits)|নতুন পিন (৪+ সংখ্যা)
+lockMin|Auto-lock (minutes)|অটো-লক (মিনিট)
+lowDef|Default low-stock level|ডিফল্ট কম স্টক সীমা
+cats|Categories|ক্যাটাগরি
+units|Units|একক
+add|Add|যোগ
+exp|Export backup|ব্যাকআপ নিন
+imp|Import backup|ব্যাকআপ ফেরত দিন
+impQ|Replace ALL current data with this backup?|বর্তমান সব ডেটা এই ব্যাকআপ দিয়ে বদলাবেন?
+impOk|Backup restored|ব্যাকআপ ফেরত এসেছে
+impBad|Invalid backup. Nothing was changed.|ব্যাকআপ সঠিক নয়। কিছু বদলানো হয়নি।
+limit|Data lives only in this browser on this device. Clearing site data erases it, and it does not sync. Export backups regularly. The PIN is only a convenience lock, not encryption.|ডেটা শুধু এই ডিভাইসের এই ব্রাউজারে থাকে। সাইট ডেটা মুছলে হারাবে এবং অন্য ডিভাইসে সিঙ্ক হয় না। নিয়মিত ব্যাকআপ নিন। পিন শুধু সুবিধার লক, এনক্রিপশন নয়।
+defPin|Default PIN is 1234. Please change it.|ডিফল্ট পিন ১২৩৪। অনুগ্রহ করে বদলান।
+piece|Piece|পিস
+gaj|Yard (Gaj)|গজ
+meter|Meter|মিটার
+foot|Foot|ফুট
+roll|Roll|রোল
+packet|Packet|প্যাকেট
+set|Set|সেট
+kg|Kilogram|কেজি
+wire|Wire and Cable|তার ও ক্যাবল
+bulb|Bulbs and Lighting|বাল্ব ও লাইট
+switch|Switches and Sockets|সুইচ ও সকেট
+fan|Fans|ফ্যান
+acc|Electrical Accessories|বৈদ্যুতিক সরঞ্জাম
+tools|Tools|টুলস
+oth|Other|অন্যান্য
+audit|History log|ইতিহাস লগ
+v|View all|সব দেখুন
+items|Items|আইটেম
+sold|Sold|বিক্রি হয়েছে
+profitV|Profit|লাভ`;
+const L={};TR.split('\n').forEach(l=>{const [k,e,b]=l.split('|');L[k]={en:e,bn:b}});
+let lang='bn';
+const t=(k,...a)=>{let s=(L[k]||{})[lang]||k;a.forEach((v,i)=>s=s.replace('{'+i+'}',v));return s};
+const nm=x=>String(x).startsWith('k:')?t(x.slice(2)):x;
+// ===== utils =====
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const r3=x=>Math.round((+x+Number.EPSILON)*1000)/1000,r2=x=>Math.round((+x+Number.EPSILON)*100)/100;
+const loc=()=>lang==='bn'?'bn-BD':'en-GB';
+const N=(n,d=3)=>(+n).toLocaleString(loc(),{maximumFractionDigits:d}),M=n=>'৳'+N(n,2);
+const dt=ts=>new Date(ts).toLocaleString(loc(),{dateStyle:'medium',timeStyle:'short'});
+const ymd=ts=>{const d=new Date(ts);return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,8);
+const num=v=>{v=String(v).trim().replace(/[০-৯]/g,d=>'০১২৩৪৫৬৭৮৯'.indexOf(d));return v===''||isNaN(v)?NaN:+v};
+let tt;function toast(m,er){const e=$('#toast');e.textContent=m;e.className=er?'er':'';e.style.display='block';clearTimeout(tt);tt=setTimeout(()=>e.style.display='none',3200)}
+// ===== storage =====
+let db,D={};const KEYS=['products','memos','purchases','parties','cats','units','audit','settings'];
+const DEF=()=>({products:[],memos:[],purchases:[],parties:[],audit:[],
+ cats:['wire','bulb','switch','fan','acc','tools','oth'].map(k=>({id:'c_'+k,name:'k:'+k})),
+ units:['piece','gaj','meter','foot','roll','packet','set','kg'].map(k=>({id:'u_'+k,name:'k:'+k})),
+ settings:{shop:'',addr:'',phone:'',lang:'bn',pinHash:null,lock:5,low:5,memoSeq:0,schema:2}});
+const hash=async s=>{try{const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode('vb:'+s));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}catch{return 'p:'+s}};
+const openDB=()=>new Promise((ok,no)=>{const r=indexedDB.open('vaibon',1);r.onupgradeneeded=()=>r.result.createObjectStore('kv');r.onsuccess=()=>ok(r.result);r.onerror=()=>no(r.error)});
+const getK=k=>new Promise((ok,no)=>{const r=db.transaction('kv').objectStore('kv').get(k);r.onsuccess=()=>ok(r.result);r.onerror=()=>no(r.error)});
+async function load(){const d=DEF();for(const k of KEYS){const v=await getK(k);D[k]=v===undefined?d[k]:v}D.settings={...d.settings,...D.settings}
+ // migration: make sure legacy records have the expected fields
+ D.products.forEach(p=>{p.stock=r3(p.stock||0);p.cost=+p.cost||0;p.price=+p.price||0});D.memos.forEach(m=>{m.status=m.status||'active'})}
+function save(keys){return new Promise((ok,no)=>{const tx=db.transaction('kv','readwrite');keys.forEach(k=>tx.objectStore('kv').put(D[k],k));tx.oncomplete=ok;tx.onerror=tx.onabort=()=>no(tx.error||new Error('tx'))})}
+let busy=false;
+async function commit(fn,keys){if(busy)return false;busy=true;try{fn();await save(keys);return true}catch(e){try{await load()}catch{}toast(t('eSave',e.message||e.name),1);return false}finally{busy=false}}
+// ===== state =====
+const S={page:'dash',q:'',cat:'',mq:'',mc:'',un:false,cart:[],f:{cust:'',phone:'',disc:'',paid:'',method:'cash',note:''},from:'',to:'',lastRep:'30'};
+let lockT;function touch(){clearTimeout(lockT);if(S.un)lockT=setTimeout(()=>{S.un=false;render()},Math.max(1,D.settings.lock)*60000)}
+const prod=id=>D.products.find(p=>p.id===id),catN=id=>{const c=D.cats.find(c=>c.id===id);return c?nm(c.name):'—'},unitN=id=>{const u=D.units.find(u=>u.id===id);return u?nm(u.name):''};
+const shop=()=>D.settings.shop||t('app');
+const opts=(arr,sel,all)=>(all?`<option value="">${t('allCat')}</option>`:'')+arr.map(x=>`<option value="${x.id}" ${x.id===sel?'selected':''}>${esc(nm(x.name))}</option>`).join('');
+const thumb=p=>p.img?`<img class="th" src="${p.img}" alt="">`:`<div class="th">📦</div>`;
+const lowP=p=>p.stock<=p.low;
+// ===== shell =====
+const NAV=[['dash','🏠'],['prods','📦'],['memo','🧾'],['hist','📜'],['buy','🚚'],['parties','👥'],['reports','📊'],['settings','⚙️']];
+function render(){document.documentElement.lang=lang;document.title=shop();
+ $('#top').innerHTML=`<span>⚡ ${esc(shop())}</span><span class="row" style="flex:none"><button class="b s ${S.un?'g2':'v'}" data-a="${S.un?'lock':'unlock'}">${S.un?'🔓 '+t('lockW'):'🔒 '+t('showW')}</button><button class="b s o" style="color:#fff;border-color:#fff" data-a="lang">${lang==='bn'?'EN':'বাং'}</button></span>`;
+ $('#side').innerHTML=`<h1>⚡ ${esc(shop())}</h1>`+NAV.map(([p,i])=>`<button class="${S.page===p?'on':''}" data-a="go" data-id="${p}"><span>${i}</span>${t(p)}</button>`).join('');
+ $('#bn').innerHTML=NAV.map(([p,i])=>`<button class="${S.page===p?'on':''}" data-a="go" data-id="${p}"><span>${i}</span>${t(p)}</button>`).join('');
+ $('#pg').innerHTML=PAGES[S.page]();}
+// ===== product list =====
+function filt(q,c){q=q.toLowerCase();return D.products.filter(p=>(!c||p.cat===c)&&(!q||p.name.toLowerCase().includes(q)||(p.code||'').toLowerCase().includes(q)))}
+function plist(q,c,memo){const a=filt(q,c).sort((x,y)=>x.name.localeCompare(y.name));if(!a.length)return `<p class="mu">${t('empty')}</p>`;
+ return a.map(p=>`<div class="it">${thumb(p)}<div class="t" data-a="${memo?'':'pview'}" data-id="${p.id}"><b>${esc(p.name)}</b><span class="mu">${esc(p.code||'')} · ${M(p.price)}${S.un?' · 🔒 '+M(p.cost):''}</span><br><span class="bd ${lowP(p)?'':'ok'}">${N(p.stock)} ${esc(unitN(p.unit))}${lowP(p)?' · '+t('low'):''}</span></div>${memo?`<button class="b g2 s" data-a="addcart" data-id="${p.id}">＋ ${t('addMemo')}</button>`:''}</div>`).join('')}
+const filtBar=(qk,ck,l)=>`<div class="row"><input data-s="${qk}" value="${esc(S[qk])}" placeholder="${t('search')}"><select data-s="${ck}">${opts(D.cats,S[ck],1)}</select></div><div id="${l}" style="margin-top:6px"></div>`;
+// ===== calc =====
+function calc(){const sub=r2(S.cart.reduce((s,i)=>s+i.qty*i.price,0));let d=num(S.f.disc);const p=num(S.f.paid);const dd=isNaN(d)?0:d;const total=r2(Math.max(0,sub-dd));const pp=isNaN(p)?0:p;return{sub,disc:dd,total,paid:pp,due:r2(Math.max(0,total-pp))}}
+const totHtml=()=>{const c=calc();return `<table><tr><td>${t('sub')}</td><td>${M(c.sub)}</td></tr><tr><td>${t('disc')}</td><td>−${M(c.disc)}</td></tr><tr><td><b>${t('total')}</b></td><td><b>${M(c.total)}</b></td></tr><tr><td>${t('paid')}</td><td>${M(c.paid)}</td></tr><tr><td>${t('due')}</td><td>${M(c.due)}</td></tr></table>`};
+function cartHtml(){if(!S.cart.length)return `<p class="mu">${t('empty')}</p>`;return S.cart.map((i,x)=>{const p=prod(i.pid);return `<div class="card" style="padding:8px;margin-bottom:6px"><b>${esc(p?p.name:'?')}</b> <span class="mu">(${N(p?p.stock:0)} ${esc(p?unitN(p.unit):'')})</span><div class="row"><div><label>${t('qty')}</label><input data-c="qty" data-x="${x}" inputmode="decimal" value="${i.qty}"></div><div><label>${t('price')}</label><input data-c="price" data-x="${x}" inputmode="decimal" value="${i.price}" ${S.un?'':'readonly'}></div><button class="b r s" data-a="rmcart" data-x="${x}">✕</button></div></div>`}).join('')}
+function memoText(m){const L2=m.items.map(i=>`${i.name} — ${N(i.qty)} ${i.unit} × ${M(i.price)} = ${M(r2(i.qty*i.price))}`).join('\n');return `${shop()}\n${D.settings.addr||''} ${D.settings.phone||''}\n${t('memoNo')}: ${m.no}\n${t('date')}: ${dt(m.ts)}\n${t('cust')}: ${m.cust||'-'} ${m.phone||''}\n\n${L2}\n\n${t('sub')}: ${M(m.sub)}\n${t('disc')}: ${M(m.disc)}\n${t('total')}: ${M(m.total)}\n${t('paid')}: ${M(m.paid)}\n${t('due')}: ${M(m.due)}\n${t('thanks')}`}
+function memoView(m){return `<div class="memo" id="memoDoc"><h3>${esc(shop())}</h3><p style="text-align:center;margin:2px 0 8px">${esc(D.settings.addr||'')} ${esc(D.settings.phone||'')}</p><p>${t('memoNo')}: <b>${esc(m.no)}</b> · ${dt(m.ts)}${m.status==='deleted'?' · <b>'+t('deleted')+'</b>':''}<br>${t('cust')}: ${esc(m.cust||'-')} ${esc(m.phone||'')}</p><div class="tw"><table><tr><th>${t('product')}</th><th>${t('qty')}</th><th>${t('price')}</th><th>${t('total')}</th></tr>${m.items.map(i=>`<tr><td>${esc(i.name)}</td><td>${N(i.qty)} ${esc(i.unit)}</td><td>${M(i.price)}</td><td>${M(r2(i.qty*i.price))}</td></tr>`).join('')}</table></div><table style="margin-top:6px"><tr><td>${t('sub')}</td><td>${M(m.sub)}</td></tr><tr><td>${t('disc')}</td><td>${M(m.disc)}</td></tr><tr><td><b>${t('total')}</b></td><td><b>${M(m.total)}</b></td></tr><tr><td>${t('paid')} (${esc(t(m.method))})</td><td>${M(m.paid)}</td></tr><tr><td>${t('due')}</td><td>${M(m.due)}</td></tr></table>${m.note?`<p>${t('note')}: ${esc(m.note)}</p>`:''}<p style="text-align:center">${t('thanks')}</p></div><div class="row np" style="margin-top:10px"><button class="b" data-a="print">🖨 ${t('print')}</button><button class="b v" data-a="share" data-id="${m.id}">📤 ${t('share')}</button><button class="b o" data-a="close">${t('close')}</button></div>`}
+// ===== reports =====
+function range(){let f=S.from,to=S.to;if(!f||!to){const n=Date.now(),d=+S.lastRep;f=ymd(n-(d-1)*864e5);to=ymd(n)}return[f,to]}
+function repData(){const[f,to]=range();const ms=D.memos.filter(m=>m.status==='active'&&ymd(m.ts)>=f&&ymd(m.ts)<=to);const bp={},bc={};let disc=0,sales=0,profit=0;
+ ms.forEach(m=>{sales+=m.total;disc+=m.disc;const gross=m.items.reduce((s,i)=>s+i.qty*i.price,0)||1;m.items.forEach(i=>{const rev=i.qty*i.price*(m.total/gross),pf=rev-i.qty*i.cost;profit+=pf;const b=bp[i.pid+i.name]=bp[i.pid+i.name]||{n:i.name,q:0,r:0,u:i.unit};b.q+=i.qty;b.r+=rev;const cn=catN(i.cat);bc[cn]=(bc[cn]||0)+rev})});
+ const ps=D.purchases.filter(p=>ymd(p.ts)>=f&&ymd(p.ts)<=to);return{f,to,sales,disc,profit,bp:Object.values(bp),bc,pt:ps.reduce((s,p)=>s+p.total,0),ps}}
+// ===== pages =====
+const PAGES={
+dash(){const td=ymd(Date.now()),ms=D.memos.filter(m=>m.status==='active'&&ymd(m.ts)===td);const val=D.products.reduce((s,p)=>s+p.stock*p.cost,0);
+ const pf=ms.reduce((s,m)=>{const g=m.items.reduce((a,i)=>a+i.qty*i.price,0)||1;return s+m.items.reduce((a,i)=>a+i.qty*i.price*(m.total/g)-i.qty*i.cost,0)},0);
+ return `<div class="g"><div class="card stat"><small>${t('tProd')}</small><b>${N(D.products.length)}</b></div><div class="card stat"><small>${t('tStock')}</small><b>${N(D.products.reduce((s,p)=>s+p.stock,0))}</b></div><div class="card stat"><small>${t('tVal')}</small><b>${S.un?M(val):'🔒 '+t('hidden')}</b></div><div class="card stat"><small>${t('tSales')}</small><b>${M(ms.reduce((s,m)=>s+m.total,0))}</b></div><div class="card stat"><small>${t('tProfit')}</small><b>${S.un?M(pf):'🔒 '+t('hidden')}</b></div><div class="card stat"><small>${t('tLow')}</small><b>${N(D.products.filter(lowP).length)}</b></div></div>
+<div class="row" style="margin-bottom:12px"><button class="b" data-a="pform">＋ ${t('addProd')}</button><button class="b g2" data-a="go" data-id="memo">🧾 ${t('memo')}</button><button class="b v" data-a="go" data-id="buy">🚚 ${t('buy')}</button></div>
+<div class="card">${filtBar('q','cat','dl')}</div>
+<div class="two"><div class="card"><h3>${t('recM')}</h3>${D.memos.slice(-5).reverse().map(m=>`<div class="it"><div class="t" data-a="mview" data-id="${m.id}"><b>${esc(m.no)} · ${esc(m.cust||'-')}</b><span class="mu">${dt(m.ts)}</span></div><b>${M(m.total)}</b></div>`).join('')||`<p class="mu">${t('empty')}</p>`}</div>
+<div class="card"><h3>${t('recP')}</h3>${D.purchases.slice(-5).reverse().map(p=>`<div class="it"><div class="t"><b>${esc(p.pname)}</b><span class="mu">${dt(p.ts)} · ${N(p.qty)}</span></div>${S.un?`<b>${M(p.total)}</b>`:'🔒'}</div>`).join('')||`<p class="mu">${t('empty')}</p>`}</div></div>`},
+prods(){return `<h2>📦 ${t('prods')}</h2><div class="row" style="margin-bottom:10px"><button class="b" data-a="pform">＋ ${t('addProd')}</button></div><div class="card">${filtBar('q','cat','dl')}</div>`},
+memo(){return `<h2>🧾 ${t('memo')}</h2><div class="two"><div class="card">${filtBar('mq','mc','ml')}</div><div class="card"><h3>${t('items')}</h3><div id="cart">${cartHtml()}</div>
+<label>${t('cust')}</label><input list="cl" data-f="cust" value="${esc(S.f.cust)}"><datalist id="cl">${D.parties.filter(p=>p.type==='c').map(p=>`<option value="${esc(p.name)}">`).join('')}</datalist>
+<label>${t('phone')}</label><input data-f="phone" inputmode="tel" value="${esc(S.f.phone)}"><div class="row"><div><label>${t('disc')}</label><input data-f="disc" inputmode="decimal" value="${esc(S.f.disc)}"></div><div><label>${t('paid')}</label><input data-f="paid" inputmode="decimal" value="${esc(S.f.paid)}"></div></div>
+<label>${t('method')}</label><select data-f="method">${['cash','bkash','card','other'].map(k=>`<option value="${k}" ${S.f.method===k?'selected':''}>${t(k)}</option>`).join('')}</select><label>${t('note')}</label><input data-f="note" value="${esc(S.f.note)}"><div id="tot" style="margin:8px 0">${totHtml()}</div><button class="b g2" style="width:100%" data-a="mcreate">✔ ${t('create')}</button></div></div>`},
+hist(){return `<h2>📜 ${t('hist')}</h2><div class="card">${D.memos.slice().reverse().map(m=>`<div class="it"><div class="t" data-a="mview" data-id="${m.id}"><b>${esc(m.no)} · ${esc(m.cust||'-')}</b><span class="mu">${dt(m.ts)}</span> ${m.status==='deleted'?`<span class="bd">${t('deleted')}</span>`:''}</div><b>${M(m.total)}</b><button class="b v s" data-a="share" data-id="${m.id}">📤</button>${m.status==='active'?`<button class="b r s" data-a="mdel" data-id="${m.id}">🗑</button>`:''}</div>`).join('')||`<p class="mu">${t('empty')}</p>`}</div>`},
+buy(){const sp=D.parties.filter(p=>p.type==='s');return `<h2>🚚 ${t('buy')}</h2><div class="card"><label>${t('product')}</label><select id="b_p">${D.products.map(p=>`<option value="${p.id}">${esc(p.name)} (${esc(unitN(p.unit))})</option>`).join('')}</select>
+<label>${t('supplier')}</label><input id="b_s" list="sl"><datalist id="sl">${sp.map(p=>`<option value="${esc(p.name)}">`).join('')}</datalist>
+<div class="row"><div><label>${t('qty')}</label><input id="b_q" inputmode="decimal"></div><div><label>${t('cost')}</label><input id="b_c" inputmode="decimal"></div></div><div class="row"><div><label>${t('extra')}</label><input id="b_e" inputmode="decimal" value="0"></div><div><label>${t('paid')}</label><input id="b_pd" inputmode="decimal" value="0"></div></div><div class="row"><div><label>${t('invNo')}</label><input id="b_i"></div><div><label>${t('note')}</label><input id="b_n"></div></div><br><button class="b g2" data-a="bsave">✔ ${t('addBuy')}</button></div>
+<div class="card">${D.purchases.slice().reverse().map(p=>`<div class="it"><div class="t"><b>${esc(p.pname)} · ${N(p.qty)}</b><span class="mu">${dt(p.ts)} · ${esc(p.sup||'-')}</span></div>${S.un?`<span><b>${M(p.total)}</b><br><span class="mu">${t('due')} ${M(p.due)}</span></span>`:'🔒'}</div>`).join('')||`<p class="mu">${t('empty')}</p>`}</div>`},
+parties(){const row=p=>{const bal=p.type==='c'?D.memos.filter(m=>m.status==='active'&&m.cust===p.name).reduce((s,m)=>s+m.due,0):D.purchases.filter(x=>x.sup===p.name).reduce((s,x)=>s+x.due,0);return `<div class="it"><div class="t" data-a="partyform" data-id="${p.id}"><b>${esc(p.name)}</b><span class="mu">${esc(p.phone||'')} ${esc(p.addr||'')}</span></div><span>${t('due')}<br><b>${M(bal)}</b></span><button class="b r s" data-a="pdel" data-id="${p.id}">🗑</button></div>`};
+ return `<h2>👥 ${t('parties')}</h2><div class="two"><div class="card"><h3>${t('customer')}</h3><button class="b s" data-a="partyform" data-t="c">＋ ${t('newP')}</button>${D.parties.filter(p=>p.type==='c').map(row).join('')}</div><div class="card"><h3>${t('supplier')}</h3><button class="b s" data-a="partyform" data-t="s">＋ ${t('newP')}</button>${D.parties.filter(p=>p.type==='s').map(row).join('')}</div></div>`},
+reports(){const r=repData();const cd=D.memos.filter(m=>m.status==='active').reduce((s,m)=>s+m.due,0),sd=D.purchases.reduce((s,p)=>s+p.due,0);
+ return `<h2>📊 ${t('reports')}</h2><div class="card"><div class="row">${[['1','today'],['7','week'],['30','month']].map(([d,k])=>`<button class="b s ${!S.from&&S.lastRep===d?'':'o'}" data-a="rep" data-id="${d}">${t(k)}</button>`).join('')}</div><div class="row"><div><label>${t('from')}</label><input type="date" data-r="from" value="${r.f}"></div><div><label>${t('to')}</label><input type="date" data-r="to" value="${r.to}"></div></div></div>
+<div class="g"><div class="card stat"><small>${t('sales')}</small><b>${M(r.sales)}</b></div><div class="card stat"><small>${t('disc2')}</small><b>${M(r.disc)}</b></div><div class="card stat"><small>${t('profit')}</small><b>${S.un?M(r.profit):'🔒'}</b></div><div class="card stat"><small>${t('purch')}</small><b>${S.un?M(r.pt):'🔒'}</b></div><div class="card stat"><small>${t('custDue')}</small><b>${M(cd)}</b></div><div class="card stat"><small>${t('supDue')}</small><b>${S.un?M(sd):'🔒'}</b></div></div><p class="mu">${t('profitNote')}</p>
+<div class="two"><div class="card"><h3>${t('byProd')}</h3><div class="tw"><table>${r.bp.map(b=>`<tr><td>${esc(b.n)}</td><td>${N(b.q)} ${esc(b.u)}</td><td>${M(b.r)}</td></tr>`).join('')||`<tr><td class="mu">${t('empty')}</td></tr>`}</table></div></div><div class="card"><h3>${t('byCat')}</h3><table>${Object.entries(r.bc).map(([k,v])=>`<tr><td>${esc(k)}</td><td>${M(v)}</td></tr>`).join('')||`<tr><td class="mu">${t('empty')}</td></tr>`}</table><h3>${t('lowRep')}</h3>${D.products.filter(lowP).map(p=>`<div>${esc(p.name)}: <span class="bd">${N(p.stock)} ${esc(unitN(p.unit))}</span></div>`).join('')||`<p class="mu">${t('empty')}</p>`}</div></div>`},
+settings(){const s=D.settings;return `<h2>⚙️ ${t('settings')}</h2><div class="card"><label>${t('shopName')}</label><input id="s_n" value="${esc(s.shop)}" placeholder="${esc(t('app'))}"><label>${t('addr')}</label><input id="s_a" value="${esc(s.addr)}"><label>${t('phone')}</label><input id="s_p" value="${esc(s.phone)}">
+<div class="row"><div><label>${t('lowDef')}</label><input id="s_l" inputmode="decimal" value="${s.low}"></div><div><label>${t('lockMin')}</label><input id="s_k" inputmode="numeric" value="${s.lock}"></div></div><label>${t('newPin')}</label><input id="s_pin" inputmode="numeric" type="password" autocomplete="off">${s.pinHash?'':`<p class="mu">${t('defPin')}</p>`}<br><button class="b" data-a="ssave">${t('save')}</button></div>
+<div class="two"><div class="card"><h3>${t('cats')}</h3>${D.cats.map(c=>`<span class="bd ok" style="margin:2px">${esc(nm(c.name))}</span>`).join('')}<div class="row"><input id="n_c"><button class="b s" data-a="addcat">${t('add')}</button></div></div><div class="card"><h3>${t('units')}</h3>${D.units.map(c=>`<span class="bd ok" style="margin:2px">${esc(nm(c.name))}</span>`).join('')}<div class="row"><input id="n_u"><button class="b s" data-a="addunit">${t('add')}</button></div></div></div>
+<div class="card"><div class="row"><button class="b g2" data-a="export">⬇ ${t('exp')}</button><label class="b v" style="margin:0;color:#fff;text-align:center">⬆ ${t('imp')}<input type="file" accept=".json" id="imp" style="display:none"></label></div><p class="mu">⚠ ${t('limit')}</p></div>
+<div class="card"><h3>${t('audit')}</h3>${D.audit.slice(-8).reverse().map(a=>`<div class="mu">${dt(a.ts)} · ${esc(a.ev)} ${esc(a.ref)}</div>`).join('')||`<p class="mu">${t('empty')}</p>`}</div>`}};
+// ===== modals =====
+const mo=h=>{$('#m>div').innerHTML=h;$('#m').classList.add('on')},closeM=()=>$('#m').classList.remove('on');
+function pform(id){const p=id?prod(id):{};mo(`<h3>${id?t('edit'):t('addProd')}</h3><input type="hidden" id="p_id" value="${id||''}"><label>${t('name')}</label><input id="p_n" value="${esc(p.name)}"><div class="row"><div><label>${t('code')}</label><input id="p_c" value="${esc(p.code)}"></div><div><label>${t('brand')}</label><input id="p_b" value="${esc(p.brand)}"></div></div>
+<div class="row"><div><label>${t('cat')}</label><select id="p_t">${opts(D.cats,p.cat)}</select></div><div><label>${t('unit')}</label><select id="p_u">${opts(D.units,p.unit)}</select></div></div><div class="row"><div><label>${t('cost')}</label><input id="p_w" inputmode="decimal" value="${p.cost??''}"></div><div><label>${t('price')}</label><input id="p_r" inputmode="decimal" value="${p.price??''}"></div></div>
+<div class="row"><div><label>${t('stock')}</label><input id="p_s" inputmode="decimal" value="${p.stock??0}"></div><div><label>${t('lowAt')}</label><input id="p_l" inputmode="decimal" value="${p.low??D.settings.low}"></div></div><label>${t('desc')}</label><textarea id="p_d">${esc(p.desc)}</textarea><label>${t('photo')}</label><input type="file" id="p_f" accept="image/*"><img id="p_i" class="big" style="margin-top:6px;${p.img?'':'display:none'}" ${p.img?`src="${p.img}"`:''} alt="">
+<div class="row" style="margin-top:10px"><button class="b g2" data-a="psave">${t('save')}</button><button class="b o" data-a="close">${t('cancel')}</button></div>`);window._img=p.img||''}
+function compress(f){return new Promise((ok,no)=>{const u=URL.createObjectURL(f),i=new Image();i.onload=()=>{const k=Math.min(1,480/Math.max(i.width,i.height)),c=document.createElement('canvas');c.width=Math.round(i.width*k);c.height=Math.round(i.height*k);c.getContext('2d').drawImage(i,0,0,c.width,c.height);URL.revokeObjectURL(u);ok(c.toDataURL('image/jpeg',.72))};i.onerror=()=>no();i.src=u})}
+const v=id=>$('#'+id).value.trim();
+async function psave(){const id=v('p_id'),name=v('p_n'),code=v('p_c'),cost=num(v('p_w')),price=num(v('p_r')),stock=num(v('p_s')),low=num(v('p_l'));
+ if(!name)return toast(t('eName'),1);if(isNaN(cost)||isNaN(price)||cost<0||price<0)return toast(t('ePrice'),1);if(isNaN(stock)||stock<0)return toast(t('eStockN'),1);
+ if(code&&D.products.some(p=>p.id!==id&&(p.code||'').toLowerCase()===code.toLowerCase()))return toast(t('eCode'),1);
+ const rec={name,code,brand:v('p_b'),cat:v('p_t'),unit:v('p_u'),cost,price,stock:r3(stock),low:isNaN(low)?D.settings.low:low,desc:v('p_d'),img:window._img||'',upd:Date.now()};
+ if(await commit(()=>{if(id)Object.assign(prod(id),rec);else D.products.push({id:uid(),created:Date.now(),...rec})},['products'])){closeM();toast(t('saved'));render();refresh()}}
+function pview(id){const p=prod(id);if(!p)return;mo(`${p.img?`<img class="big" src="${p.img}" alt="">`:`<div class="big th" style="width:100%;height:200px">📦</div>`}<h3>${esc(p.name)}</h3><p>${esc(p.code||'')} · ${esc(p.brand||'')} · ${esc(catN(p.cat))}</p><p><b>${t('price')}:</b> ${M(p.price)}<br><b>${t('cost')}:</b> ${S.un?M(p.cost):'🔒 '+t('hidden')}<br><b>${t('stock')}:</b> ${N(p.stock)} ${esc(unitN(p.unit))} <span class="mu">(${t('lowAt')} ${N(p.low)})</span></p><p>${esc(p.desc||'')}</p><div class="row"><button class="b" data-a="pform" data-id="${id}">${t('edit')}</button><button class="b r" data-a="pdelete" data-id="${id}">${t('del')}</button><button class="b o" data-a="close">${t('close')}</button></div>`)}
+function partyform(id,type){const p=id?D.parties.find(x=>x.id===id):{type};mo(`<h3>${t('newP')}</h3><input type="hidden" id="q_id" value="${id||''}"><input type="hidden" id="q_t" value="${p.type}"><label>${t('name')}</label><input id="q_n" value="${esc(p.name)}"><label>${t('phone')}</label><input id="q_p" value="${esc(p.phone)}"><label>${t('addr')}</label><input id="q_a" value="${esc(p.addr)}"><label>${t('note')}</label><input id="q_o" value="${esc(p.note)}"><div class="row" style="margin-top:10px"><button class="b g2" data-a="qsave">${t('save')}</button><button class="b o" data-a="close">${t('cancel')}</button></div>`)}
+function confirmBox(msg,act,id){mo(`<p>${esc(msg)}</p><div class="row"><button class="b r" data-a="${act}" data-id="${id}">${t('del')}</button><button class="b o" data-a="close">${t('cancel')}</button></div>`)}
+function pinBox(){mo(`<h3>🔒 ${t('showW')}</h3><label>${t('pin')}</label><input id="pinv" type="password" inputmode="numeric" autocomplete="off"><div class="row" style="margin-top:10px"><button class="b" data-a="pincheck">${t('unlock')}</button><button class="b o" data-a="close">${t('cancel')}</button></div>`)}
+function refresh(){const a=$('#dl');if(a)a.innerHTML=plist(S.q,S.cat);const b=$('#ml');if(b)b.innerHTML=plist(S.mq,S.mc,1)}
+// ===== actions =====
+async function mcreate(){const items=S.cart;if(!items.length)return toast(t('eEmpty'),1);
+ for(const i of items){const p=prod(i.pid);if(!p||isNaN(i.qty)||i.qty<=0)return toast(t('eQty'),1);if(i.qty>p.stock)return toast(t('eStock',p.name),1);if(isNaN(i.price)||i.price<0)return toast(t('ePrice'),1)}
+ const sub=r2(items.reduce((s,i)=>s+i.qty*i.price,0)),d=S.f.disc===''?0:num(S.f.disc),pd=S.f.paid===''?0:num(S.f.paid);
+ if(isNaN(d)||d<0||d>sub)return toast(t('eDisc'),1);if(isNaN(pd)||pd<0)return toast(t('ePay'),1);
+ const total=r2(sub-d);let m;
+ const ok=await commit(()=>{D.settings.memoSeq++;m={id:uid(),no:'VB-'+String(D.settings.memoSeq).padStart(5,'0'),ts:Date.now(),cust:S.f.cust.trim(),phone:S.f.phone.trim(),method:S.f.method,note:S.f.note.trim(),sub,disc:r2(d),total,paid:r2(pd),due:r2(Math.max(0,total-pd)),status:'active',
+  items:items.map(i=>{const p=prod(i.pid);p.stock=r3(p.stock-i.qty);return{pid:p.id,name:p.name,unit:unitN(p.unit),cat:p.cat,qty:i.qty,price:i.price,cost:p.cost}})};D.memos.push(m);
+  const c=m.cust&&D.parties.find(x=>x.type==='c'&&x.name===m.cust);if(m.cust&&!c){D.parties.push({id:uid(),type:'c',name:m.cust,phone:m.phone})}},['memos','products','settings','parties']);
+ if(ok){S.cart=[];S.f={cust:'',phone:'',disc:'',paid:'',method:'cash',note:''};render();refresh();mo(memoView(m))}}
+async function mdel(id){const m=D.memos.find(x=>x.id===id);if(!m||m.status!=='active')return closeM();
+ if(await commit(()=>{m.items.forEach(i=>{const p=prod(i.pid);if(p)p.stock=r3(p.stock+i.qty)});m.status='deleted';m.delTs=Date.now();D.audit.push({ts:Date.now(),ev:'memo-delete+restock',ref:m.no})},['memos','products','audit'])){closeM();toast(t('saved'));render()}}
+async function share(id){const m=D.memos.find(x=>x.id===id),tx=memoText(m);
+ if(navigator.share){try{await navigator.share({title:m.no,text:tx});return}catch(e){if(e.name==='AbortError')return}}
+ try{await navigator.clipboard.writeText(tx);toast(t('copied'))}catch{mo(`<p>${t('copyMan')}</p><textarea rows="12" readonly onfocus="this.select()">${esc(tx)}</textarea><button class="b o" data-a="close" style="margin-top:8px">${t('close')}</button>`)}}
+function exportB(){const o={app:'vaibon',schema:2,exported:new Date().toISOString(),lang,data:Object.fromEntries(KEYS.map(k=>[k,D[k]]))};const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(o)],{type:'application/json'}));a.download='vaibon-backup-'+ymd(Date.now())+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),2000)}
+function validB(o){try{if(!o||o.app!=='vaibon'||!o.schema||o.schema>2||!o.data)return false;const d=o.data;for(const k of ['products','memos','purchases','parties','cats','units','audit'])if(!Array.isArray(d[k]))return false;if(typeof d.settings!=='object'||!d.settings)return false;
+ if(!d.products.every(p=>p&&p.id&&typeof p.name==='string'&&isFinite(p.stock)&&p.stock>=0&&isFinite(p.price)&&isFinite(p.cost)))return false;
+ return d.memos.every(m=>m&&m.id&&Array.isArray(m.items)&&isFinite(m.total))&&d.purchases.every(p=>p&&p.id&&isFinite(p.total))}catch{return false}}
+const dayAdd=(f)=>f;
+const H={
+ go(e){S.page=e.dataset.id;render();refresh();window.scrollTo(0,0)},lang(){lang=lang==='bn'?'en':'bn';D.settings.lang=lang;save(['settings']).catch(()=>{});render();refresh()},
+ unlock(){pinBox()},lock(){S.un=false;render();refresh()},close:closeM,print(){window.print()},
+ async pincheck(){const h=await hash(v('pinv')),good=await hash('1234');if(h===(D.settings.pinHash||good)){S.un=true;closeM();touch();render();refresh()}else toast(t('pinWrong'),1)},
+ pform(e){pform(e.dataset.id)},pview(e){pview(e.dataset.id)},psave,pdelete(e){confirmBox(t('delProdQ',prod(e.dataset.id).name),'pdel2',e.dataset.id)},
+ async pdel2(e){if(await commit(()=>{D.products=D.products.filter(p=>p.id!==e.dataset.id);S.cart=S.cart.filter(i=>i.pid!==e.dataset.id)},['products'])){closeM();render();refresh()}},
+ addcart(e){const p=prod(e.dataset.id),l=S.cart.find(i=>i.pid===p.id);if(l)l.qty=r3(l.qty+1);else S.cart.push({pid:p.id,qty:1,price:p.price});$('#cart').innerHTML=cartHtml();$('#tot').innerHTML=totHtml()},
+ rmcart(e){S.cart.splice(+e.dataset.x,1);$('#cart').innerHTML=cartHtml();$('#tot').innerHTML=totHtml()},mcreate,
+ mview(e){mo(memoView(D.memos.find(m=>m.id===e.dataset.id)))},mdel(e){const m=D.memos.find(x=>x.id===e.dataset.id);confirmBox(t('delMemoQ',m.no),'mdel2',m.id)},mdel2(e){mdel(e.dataset.id)},share(e){share(e.dataset.id)},
+ async bsave(){const p=prod(v('b_p')),q=num(v('b_q')),c=num(v('b_c')),ex=num(v('b_e')||0),pd=num(v('b_pd')||0);if(!p)return toast(t('eEmpty'),1);if(isNaN(q)||q<=0)return toast(t('eQty'),1);if(isNaN(c)||c<0||isNaN(ex)||ex<0)return toast(t('ePrice'),1);const total=r2(q*c+ex);if(isNaN(pd)||pd<0||pd>total)return toast(t('ePay'),1);
+  if(await commit(()=>{p.stock=r3(p.stock+q);p.cost=r2(total/q);D.purchases.push({id:uid(),ts:Date.now(),pid:p.id,pname:p.name,sup:v('b_s'),qty:q,unit:unitN(p.unit),ucost:c,extra:ex,total,paid:pd,due:r2(total-pd),inv:v('b_i'),note:v('b_n')});const s=v('b_s');if(s&&!D.parties.some(x=>x.type==='s'&&x.name===s))D.parties.push({id:uid(),type:'s',name:s})},['products','purchases','parties'])){toast(t('saved'));render()}},
+ partyform(e){partyform(e.dataset.id,e.dataset.t)},
+ async qsave(){const n=v('q_n');if(!n)return toast(t('eName'),1);const id=v('q_id'),rec={type:v('q_t'),name:n,phone:v('q_p'),addr:v('q_a'),note:v('q_o')};if(await commit(()=>{id?Object.assign(D.parties.find(x=>x.id===id),rec):D.parties.push({id:uid(),...rec})},['parties'])){closeM();render()}},
+ async pdel(e){if(await commit(()=>{D.parties=D.parties.filter(x=>x.id!==e.dataset.id)},['parties']))render()},
+ rep(e){S.from=S.to='';S.lastRep=e.dataset.id;render()},
+ async ssave(){const pin=v('s_pin');if(pin&&(pin.length<4||!/^\d+$/.test(pin)))return toast(t('pin'),1);const h=pin?await hash(pin):null;
+  if(await commit(()=>{const s=D.settings;s.shop=v('s_n');s.addr=v('s_a');s.phone=v('s_p');s.low=Math.max(0,num(v('s_l'))||0);s.lock=Math.max(1,Math.round(num(v('s_k'))||5));if(h)s.pinHash=h},['settings'])){toast(t('saved'));render()}},
+ async addcat(){const n=v('n_c');if(n&&await commit(()=>D.cats.push({id:uid(),name:n}),['cats']))render()},
+ async addunit(){const n=v('n_u');if(n&&await commit(()=>D.units.push({id:uid(),name:n}),['units']))render()},export:exportB};
+document.addEventListener('click',e=>{touch();const el=e.target.closest('[data-a]');if(!el)return;const f=H[el.dataset.a];if(f)f(el)});
+document.addEventListener('input',e=>{const el=e.target;touch();
+ if(el.dataset.s){S[el.dataset.s]=el.value;refresh()}
+ else if(el.dataset.f){S.f[el.dataset.f]=el.value;$('#tot').innerHTML=totHtml()}
+ else if(el.dataset.c){const i=S.cart[+el.dataset.x];i[el.dataset.c]=num(el.value);$('#tot').innerHTML=totHtml()}});
+document.addEventListener('change',async e=>{const el=e.target;
+ if(el.dataset.s){S[el.dataset.s]=el.value;refresh()}
+ else if(el.dataset.r){S[el.dataset.r]=el.value;render()}
+ else if(el.dataset.f==='method'){S.f.method=el.value}
+ else if(el.id==='p_f'&&el.files[0]){try{window._img=await compress(el.files[0]);const i=$('#p_i');i.src=window._img;i.style.display='block'}catch{toast(t('eImg'),1)}}
+ else if(el.id==='imp'&&el.files[0]){let o;try{o=JSON.parse(await el.files[0].text())}catch{}el.value='';
+  if(!validB(o))return toast(t('impBad'),1);if(!confirm(t('impQ')))return;
+  const snap=JSON.stringify(D);if(await commit(()=>{KEYS.forEach(k=>D[k]=o.data[k]);D.settings={...DEF().settings,...D.settings}},KEYS)){lang=D.settings.lang||lang;toast(t('impOk'));render();refresh()}else{D=JSON.parse(snap)}}});
+// ===== boot =====
+(async()=>{try{db=await openDB();await load();lang=D.settings.lang||'bn'}catch(e){Object.assign(D,DEF());$('#pg').innerHTML=`<div class="card"><b>⚠ ${t('eDb')}</b></div>`;return}
+ render();refresh()})();
+</script></body></html>
