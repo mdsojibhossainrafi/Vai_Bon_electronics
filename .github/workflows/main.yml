@@ -45,7 +45,7 @@ jobs:
 
           echo "Using: $SDKMANAGER"
 
-          yes | "$SDKMANAGER" --licenses
+          yes | "$SDKMANAGER" --licenses || true
 
           "$SDKMANAGER" --install \
             "platform-tools" \
