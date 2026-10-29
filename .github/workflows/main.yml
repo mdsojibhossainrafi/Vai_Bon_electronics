@@ -1,65 +1,17 @@
 
-name: Build Vai Bon Electronics APK
-
-on:
-  workflow_dispatch:
-  push:
-    branches:
-      - main
-
-permissions:
-  contents: read
-
-jobs:
-  build:
-    name: Build Android APK
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout source
-        uses: actions/checkout@v4
-
-      - name: Set up Java
-        uses: actions/setup-java@v5
-        with:
-          distribution: temurin
-          java-version: '17'
-
       - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
-        with:
-          packages: |
-            platform-tools
-            platforms;android-35
-            build-tools;35.0.0
-
-      - name: Check project files
+        shell: bash
         run: |
-          echo "Checking Android project..."
-          ls -la
-          test -f gradlew || {
-            echo "ERROR: gradlew is missing from the project root."
-            exit 1
-          }
-          test -f settings.gradle -o -f settings.gradle.kts || {
-            echo "ERROR: Gradle settings file is missing."
-            exit 1
-          }
-          test -d app || {
-            echo "ERROR: app folder is missing."
-            exit 1
-          }
+          SDKMANAGER="$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager"
 
-      - name: Build APK
-        run: |
-          chmod +x gradlew
-          ./gradlew --no-daemon assembleDebug
+          if [ ! -x "$SDKMANAGER" ]; then
+            echo "ERROR: sdkmanager not found at $SDKMANAGER"
+            exit 1
+          fi
 
-      - name: Upload APK
-        if: success()
-        uses: actions/upload-artifact@v4
-        with:
-          name: VaiBonElectronics-APK
-          path: app/build/outputs/apk/debug/*.apk
-          if-no-files-found: error
-          retention-days: 7
+          yes | "$SDKMANAGER" --licenses
+
+          "$SDKMANAGER" --install \
+            "platform-tools" \
+            "platforms;android-35" \
+            "build-tools;35.0.0"
