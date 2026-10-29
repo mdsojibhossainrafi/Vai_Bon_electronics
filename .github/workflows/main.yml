@@ -1,3 +1,4 @@
+
 name: Build Vai Bon Electronics APK
 
 on:
@@ -6,8 +7,12 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+
 jobs:
   build:
+    name: Build Android APK
     runs-on: ubuntu-latest
 
     steps:
@@ -15,7 +20,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set up Java
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: '17'
@@ -28,14 +33,33 @@ jobs:
             platforms;android-35
             build-tools;35.0.0
 
+      - name: Check project files
+        run: |
+          echo "Checking Android project..."
+          ls -la
+          test -f gradlew || {
+            echo "ERROR: gradlew is missing from the project root."
+            exit 1
+          }
+          test -f settings.gradle -o -f settings.gradle.kts || {
+            echo "ERROR: Gradle settings file is missing."
+            exit 1
+          }
+          test -d app || {
+            echo "ERROR: app folder is missing."
+            exit 1
+          }
+
       - name: Build APK
         run: |
           chmod +x gradlew
-          ./gradlew assembleDebug
+          ./gradlew --no-daemon assembleDebug
 
       - name: Upload APK
+        if: success()
         uses: actions/upload-artifact@v4
         with:
           name: VaiBonElectronics-APK
           path: app/build/outputs/apk/debug/*.apk
           if-no-files-found: error
+          retention-days: 7
