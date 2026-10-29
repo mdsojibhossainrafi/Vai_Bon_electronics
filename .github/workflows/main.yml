@@ -28,49 +28,31 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - name: Install Android SDK packages
-        shell: bash
+      - name: Install Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install SDK packages
         run: |
-          set -e
-
-          SDKMANAGER=$(find "$ANDROID_HOME/cmdline-tools" \
-            -name sdkmanager -type f 2>/dev/null | head -n 1)
-
-          if [ -z "$SDKMANAGER" ]; then
-            echo "ERROR: sdkmanager not found"
-            exit 1
-          fi
-
-          echo "Using SDK manager: $SDKMANAGER"
-
-          yes | "$SDKMANAGER" --licenses || true
-
-          "$SDKMANAGER" \
+          yes | sdkmanager --licenses
+          sdkmanager \
             "platform-tools" \
             "platforms;android-35" \
             "build-tools;35.0.0"
 
-      - name: Check Android project
-        shell: bash
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.9'
+
+      - name: Check project files
         run: |
-          ls -la
-          test -d app || {
-            echo "ERROR: app folder missing"
-            exit 1
-          }
-          test -f gradlew || {
-            echo "ERROR: gradlew missing"
-            exit 1
-          }
+          test -f settings.gradle -o -f settings.gradle.kts
+          test -f app/build.gradle -o -f app/build.gradle.kts
 
       - name: Build APK
-        shell: bash
-        run: |
-          chmod +x gradlew
-          ./gradlew --no-daemon assembleDebug
+        run: gradle --no-daemon assembleDebug
 
       - name: Upload APK
-        if: success()
         uses: actions/upload-artifact@v4
         with:
           name: VaiBonElectronics-APK
