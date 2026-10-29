@@ -14,6 +14,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    env:
+      ANDROID_HOME: /usr/local/lib/android/sdk
+      ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+
     steps:
       - name: Checkout source
         uses: actions/checkout@v4
@@ -24,23 +28,43 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
-        with:
-          packages: |
-            platform-tools
-            platforms;android-35
-            build-tools;35.0.0
-
-      - name: Check project files
+      - name: Install Android SDK packages
+        shell: bash
         run: |
-          ls -la
-          if [ ! -f gradlew ]; then
-            echo "ERROR: gradlew is missing from project root"
+          set -e
+
+          SDKMANAGER=$(find "$ANDROID_HOME/cmdline-tools" \
+            -name sdkmanager -type f 2>/dev/null | head -n 1)
+
+          if [ -z "$SDKMANAGER" ]; then
+            echo "ERROR: sdkmanager not found"
             exit 1
           fi
 
+          echo "Using SDK manager: $SDKMANAGER"
+
+          yes | "$SDKMANAGER" --licenses || true
+
+          "$SDKMANAGER" \
+            "platform-tools" \
+            "platforms;android-35" \
+            "build-tools;35.0.0"
+
+      - name: Check Android project
+        shell: bash
+        run: |
+          ls -la
+          test -d app || {
+            echo "ERROR: app folder missing"
+            exit 1
+          }
+          test -f gradlew || {
+            echo "ERROR: gradlew missing"
+            exit 1
+          }
+
       - name: Build APK
+        shell: bash
         run: |
           chmod +x gradlew
           ./gradlew --no-daemon assembleDebug
